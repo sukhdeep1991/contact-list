@@ -1,0 +1,15 @@
+.full-width{
+    width: 100%;
+}
+.contact-form{
+    width: 500px;
+}
+.pad-L-20{
+    padding-left: 20px;
+}
+.pad-L-20.full-width{
+    width: calc(100% - 20px);
+}
+.add-btn{
+    margin-left: 450px;
+}

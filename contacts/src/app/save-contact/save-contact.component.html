@@ -1,0 +1,51 @@
+<section class="pad-L-20">
+    <h2 *ngIf="contactId">Edit Contact</h2>
+    <h2 *ngIf="!contactId">Create Contact</h2>
+    <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact-form">
+        <md-input-container class="full-width">
+            <input mdInput placeholder="First Name" name="firstName" #firstName="ngModel" 
+            [(ngModel)]="contact.firstName" required="" 
+            mdTooltip="First Name is required!" [mdTooltipPosition]="'after'" 
+            maxlength="15" [mdTooltipDisabled]="!firstName.errors" />
+        </md-input-container>
+        <md-input-container class="full-width">
+            <input mdInput placeholder="Last Name" name="lastName" #lastName="ngModel" 
+            [(ngModel)]="contact.lastName"  required=""
+            mdTooltip="Last Name is required!" [mdTooltipPosition]="'after'" 
+            [mdTooltipDisabled]="!lastName.errors" maxlength="15" />
+        </md-input-container>
+        <md-input-container class="full-width">
+            <input mdInput placeholder="Company" name="company" 
+            #company [(ngModel)]="contact.company" 
+            maxlength="20" />
+        </md-input-container>
+        <section class="mat-typography">
+            <h4>Informations: </h4>
+            <table cellspacing="0" class="full-width">
+                <tr *ngFor="let contactInformation of contact.informations; let i=index;">
+                    <td>
+                        <md-select placeholder="Type" required="" 
+                        [ngClass]="{'ng-touched': contactForm._submitted}"
+                        name="informationType{{i}}" [(ngModel)]="contactInformation.type"
+                        mdTooltip="Please select type of information!" [mdTooltipPosition]="'after'" >
+                            <md-option *ngFor="let informationType of informationTypes" [value]="informationType">
+                                {{informationType}}
+                            </md-option>
+                        </md-select>
+                    </td>
+                    <td>
+                        <md-input-container class="full-width pad-L-20">
+                            <input mdInput placeholder="Value" name="informationValue{{i}}" maxlength="50"
+                                #informationType="ngModel" ngDefaultControl  required=""
+                                mdTooltip="Information value is reuired!" [mdTooltipPosition]="'after'"
+                                name="informationValue{{i}}" [(ngModel)]="contactInformation.value"  />
+                        </md-input-container>
+                    </td>
+                </tr>
+            </table>
+            <button type="button" class="add-btn" md-mini-fab (click)="addInformation()"><md-icon>add</md-icon></button>
+        </section>
+        <button md-raised-button type="submit">Save</button>
+        <button md-raised-button type="button "(click)="cancelSaveContact()">Cancel</button>
+    </form>
+</section>

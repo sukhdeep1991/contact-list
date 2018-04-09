@@ -1,0 +1,14 @@
+<div class="clearfix list-container">
+    <a class="add-btn" md-fab routerLink="/create"><md-icon>add</md-icon></a>
+    <md-list>
+        <md-list-item *ngFor="let contact of contacts">
+            <button md-button md-line (click)="selectContact(contact)">
+                <md-icon md-list-icon>account_box</md-icon>
+                {{getContactTitle(contact)}}
+            </button>
+        </md-list-item>
+    </md-list>
+</div>
+<div class="contact-details" *ngIf="selectedContact !== undefined">
+    <app-contact-details [contact]="selectedContact" (contactDelete)="deleteSelectedContact()"></app-contact-details>
+</div>

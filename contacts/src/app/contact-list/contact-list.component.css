@@ -1,0 +1,21 @@
+*/deep/.mat-grid-tile .mat-figure{
+    display: block;
+}
+.add-btn{
+    margin-left: calc(100% - 56px);
+}
+.mat-button{
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+.list-container{
+    width: 20%;
+    display: inline-block;
+    float: left;
+}
+.contact-details{
+    width: 30%;
+    display: inline-block;
+    float: left;
+    margin-left: 50px;
+}

@@ -1,0 +1,19 @@
+<md-card class="contact-card">
+    <md-card-header>
+        <div md-card-avatar><md-icon>account_box</md-icon> </div>
+        <md-card-title>{{contact.lastName}} {{contact.firstName}}</md-card-title>
+        <md-card-subtitle>{{contact.company}}</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+        <md-list>
+            <md-list-item *ngFor="let information of contact.informations">
+            <div md-subheader>{{information.type}}</div>
+            <h3 md-line>{{information.value}}</h3>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+    <md-card-actions>
+        <a md-button routerLink="/edit/{{contact._id}}">Edit</a>
+        <button md-button (click)="deleteContact()">Delete</button>
+    </md-card-actions>
+</md-card>
